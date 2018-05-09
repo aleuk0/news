@@ -6,6 +6,9 @@
 			<div class="date">
 				<p>Опубликовано: {{ post.published_date }}</p>
 			</div>
+			<div class="counter">
+				<p>Количество просмотров: {{ post.counter }}</p>
+			</div>
 			<h1><a href="{% url 'news_detail' pk=post.pk %}">{{ post.title }}</a></h1>
 			<p>{{ post.text|linebreaksbr |truncatewords:30 }}</p> <!-- обрезаем текст до 30 слов -->
 		</div>
