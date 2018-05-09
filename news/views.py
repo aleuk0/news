@@ -10,4 +10,6 @@ def news_list(request):
 
 def news_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    post.counter += 1
+    post.save()
     return render(request, 'news/news_detail.html', {'post': post})
