@@ -5,7 +5,13 @@ from django.utils import timezone
 
 #минимальные элементы: текст, заголовок, дата отправления, автор, список тегов, количество просмотров
 
-class Post(models.Model): #возможно лучше изменить на Post, а все новости в целом оставить News
+class Tag(models.Model):
+    word = models.CharField(max_length=35)
+
+    def __str__(self):
+        return self.word
+
+class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
@@ -14,6 +20,7 @@ class Post(models.Model): #возможно лучше изменить на Pos
     published_date = models.DateTimeField(
             blank=True, null=True)
     counter = models.IntegerField()
+    tags = models.ManyToManyField(Tag)
 
     def publish(self):
         self.published_date = timezone.now()
