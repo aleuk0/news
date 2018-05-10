@@ -1,10 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
-
-#минимальные элементы: текст, заголовок, дата отправления, автор, список тегов, количество просмотров
-
 class Tag(models.Model):
     word = models.CharField(max_length=35)
 
