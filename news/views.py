@@ -45,3 +45,7 @@ def news_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'news/news_edit.html', {'form': form})
+
+def news_statistics(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-counter')
+    return render(request, 'news/news_statistics.html', {'posts': posts})

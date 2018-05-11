@@ -1,0 +1,25 @@
+{% extends 'news/base.html' %}
+
+<!--Таблица со столбцами «заголовок» , «дата добавления», «количество 
+    просмотров», отсортированная по убыванию просмотров-->
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Published date</th>
+                <th scope="col">Counter</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <th scope="row">{{ post.title }}</th>
+                    <td>{{ post.published_date }}</td>
+                    <td>{{ post.counter }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
