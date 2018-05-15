@@ -25,6 +25,7 @@ def news_new(request):
             post.published_date = timezone.now()
             post.counter = 0
             post.save()
+            form.save_m2m()
             return redirect('news_detail', pk=post.pk)
     else:
         form = PostForm()
@@ -41,6 +42,7 @@ def news_edit(request, pk):
             post.published_date = timezone.now()
             post.counter = 0
             post.save()
+            form.save_m2m()
             return redirect('news_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
