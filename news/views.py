@@ -5,7 +5,6 @@ from .models import Post
 from .forms import PostForm
 
 
-# Create your views here.
 def news_list(request):
     posts = Post.objects.filter(
         published_date__lte=timezone.now()).order_by('published_date')
